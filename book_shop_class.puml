@@ -1,0 +1,70 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package Database {
+class DatabaseManager {
+}
+
+}
+
+package Exporter {
+class Exporter {
++toXml()
+}
+}
+
+
+package Book {
+class Book {
+-title
+-author
+}
+
+Review -- Book
+class Review {
+}
+}
+
+package "Order<<core>>" {
+
+Book -- Order
+
+
+class Order {
+}
+}
+
+package Users {
+Review -- Account
+Order -- Account
+class Account {
+}
+}
+
+package Services {
+CatalogService -- Exporter
+CatalogService -- Book
+CatalogService -- DatabaseManager
+OrderService -- DatabaseManager
+AccountService -- DatabaseManager
+class CatalogService{}
+OrderService -- Order
+class OrderService{}
+AccountService -- Account
+class AccountService{}
+}
+
+package Interfaces {
+Web -- CatalogService
+Web -- OrderService
+Web -- AccountService
+class Web {
+}
+}
+
+package PaySystem {
+Payment -- Order
+class Payment {
+}
+}
+@enduml
