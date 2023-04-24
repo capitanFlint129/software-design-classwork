@@ -4,6 +4,7 @@
 package Database {
 class DatabaseManager {
 }
+
 }
 
 package Exporter {
@@ -43,6 +44,9 @@ class Account {
 package Services {
 CatalogService -- Exporter
 CatalogService -- Book
+CatalogService -- DatabaseManager
+OrderService -- DatabaseManager
+AccountService -- DatabaseManager
 class CatalogService{}
 OrderService -- Order
 class OrderService{}
